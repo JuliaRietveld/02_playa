@@ -1,7 +1,6 @@
 package slides
 {
 	import events.SlideEvent;
-	
 	import flash.display.Sprite;
 	
 	public class SlideBase extends Sprite

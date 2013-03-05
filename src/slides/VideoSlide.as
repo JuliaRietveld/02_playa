@@ -12,19 +12,19 @@ package slides
 	{
 		private var _video: FLVPlayback;
 		private var _videourl:String;
-		private var _contajner:Sprite;
+		private var _container:Sprite;
 		
 		public function VideoSlide(url:String)
 		{
 			super(url);
 			
-			_contajner=new Sprite();
-			addChild(_contajner);
+			_container=new Sprite();
+			addChild(_container);
 			
 			_videourl=url;
 			_video = new FLVPlayback();
 			_video.load(_videourl);
-			_contajner.addChild(_video);
+			_container.addChild(_video);
 			
 			_video.addEventListener(VideoEvent.COMPLETE, handleComplete);
 			

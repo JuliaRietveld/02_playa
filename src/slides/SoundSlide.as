@@ -13,19 +13,19 @@ package slides
 	{
 		private var _soundChannel: SoundChannel;
 		private var _sound: Sound;
-		private var _contajner:Sprite;
+		private var _container:Sprite;
 		
 		public function SoundSlide(url:String, coverurl:String)
 		{
 			super(url);
-			_sound = new Sound();
-			_sound.load(new URLRequest(url));
-			_soundChannel = _sound.play();
+			this._sound = new Sound();
+			this._sound.load(new URLRequest(url));
+			this._soundChannel = _sound.play();
 			
-			_contajner=new Sprite();
-			addChild(_contajner);
+			this._container=new Sprite();
+			this.addChild(this._container);
 
-		_contajner.addChild(new ImageLoader(coverurl));
+		this._container.addChild(new ImageLoader(coverurl));
 		
 		
 		_sound.addEventListener(Event.COMPLETE, handleComplete);

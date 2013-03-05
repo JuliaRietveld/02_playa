@@ -10,42 +10,44 @@ package slides
 	
 	public class ImageSlide extends SlideBase
 	{
-		private var _contajner:Sprite;
+		private var _container:Sprite;
 		private var _duration:Number;
 		private var _firstTime:Number;
 		
 		public function ImageSlide(url:String, duration:Number)
 		{
 			super(url);
-			_contajner=new Sprite();
-			addChild(_contajner);
+			this._container=new Sprite();
+			this.addChild(this._container);
 
-			_contajner.addChild(new ImageLoader(url));
+			this._container.addChild(new ImageLoader(url));
 			
-			_duration=duration;
+			this._duration=duration;
 			
-			_contajner.addEventListener(Event.COMPLETE, handleComplete);
+			this._container.addEventListener(Event.COMPLETE, this.handleComplete);
 		}
 		override public function get progress(): Number
 		{	
-			var NewHourtoMS:Number=getTimer();
+			var newTime:Number=getTimer();
 	
 			trace(getTimer());
 
-			if (NewHourtoMS>(_duration*1000+ _firstTime))
-			{NewHourtoMS=_duration*1000+ _firstTime}
+			if (newTime > (_duration * 1000+ _firstTime))
+			{
+				newTime= _duration * 1000 + _firstTime;
+			}
 			
-			return (NewHourtoMS -_firstTime) / (_duration*1000);
+			return (newTime -_firstTime) / (_duration * 1000);
 		}
 		override public function activate(): void
 		{
 			this.visible = true;
-			_firstTime=getTimer();
+			this._firstTime=getTimer();
 		}		
 		override public function deactivate(): void
 		{
 			this.visible = false;
-			_firstTime=0;
+			this._firstTime=0;
 		}				
 		protected function handleComplete(event: Event): void
 		{

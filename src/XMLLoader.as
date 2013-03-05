@@ -22,11 +22,11 @@ package
 		
 		public function XMLLoader(xmlUrl:String, slideDataVec:Vector.<SlideData>)
 		{		
-			_slideDataVec=slideDataVec;
+			this._slideDataVec=slideDataVec;
 			
-			_loader = new URLLoader(new URLRequest(xmlUrl));
-			_loader.addEventListener(Event.COMPLETE, handleComplete);
-			_loader.addEventListener(IOErrorEvent.IO_ERROR, onIOError);
+			this._loader = new URLLoader(new URLRequest(xmlUrl));
+			this._loader.addEventListener(Event.COMPLETE, handleComplete);
+			this._loader.addEventListener(IOErrorEvent.IO_ERROR, onIOError);
 		}
 		protected function handleComplete(event: Event): void
 		{
@@ -35,27 +35,27 @@ package
 			{
 				switch (slide.@type.toString()){
 					case 'image':
-						var imageUrlString:String=new String();
-						var durationString:Number;;						
-						imageUrlString= slide.url;				
-						durationString= slide.duration;	
-						_slideData=new SlideData('image',  imageUrlString, Number(durationString), '');
+						var imageUrlString:String = new String();
+						var duration:Number;					
+						imageUrlString = slide.url;				
+						duration = slide.duration;	
+						_slideData = new SlideData('image',  imageUrlString, Number(duration), '');
 						_slideDataVec.push( _slideData);
 						break;
 					
 					case 'video':
-						var videoUrlString:String=new String();			
-						videoUrlString= slide.url;	
-						_slideData=new SlideData( 'video', videoUrlString, 0, '' );
+						var videoUrlString:String = new String();			
+						videoUrlString = slide.url;	
+						_slideData = new SlideData( 'video', videoUrlString, 0, '' );
 						_slideDataVec.push( _slideData);
 						break;
 					
   					case 'sound':
-						var soundUrlString:String=new String();
-						var coverString:String=new String();						
-						soundUrlString= slide.url;				
-						coverString= slide.cover;	
-						_slideData=new SlideData('sound', soundUrlString, 0, coverString);
+						var soundUrlString:String = new String();
+						var coverString:String = new String();						
+						soundUrlString = slide.url;				
+						coverString = slide.cover;	
+						_slideData =new SlideData('sound', soundUrlString, 0, coverString);
 						_slideDataVec.push( _slideData);
 						break;
 				}
@@ -64,13 +64,13 @@ package
 		}
 		private function onIOError(e:IOErrorEvent):void
 		{
-			_loader.removeEventListener(Event.COMPLETE, handleComplete);
-			_loader.removeEventListener(IOErrorEvent.IO_ERROR, onIOError);
+			this._loader.removeEventListener(Event.COMPLETE, this.handleComplete);
+			this._loader.removeEventListener(IOErrorEvent.IO_ERROR, this.onIOError);
 			
 		}
 		public function get slideDataVec(): Vector.<SlideData>
 		{
-			return _slideDataVec;
+			return this._slideDataVec;
 		}
 	}
 }

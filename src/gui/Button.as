@@ -10,11 +10,12 @@ package gui
 		public function Button()
 		{
 			super();
-			_buttonBody=new Sprite();
+			_buttonBody = new Sprite();
 			draw();
      		addChild(_buttonBody);
 			
-			this.filters=[new DropShadowFilter(0,20,0xCCCCCC,0.5,12,12,1,1,false,false,false)];
+			this.filters=[new DropShadowFilter(0,20,0xCCCCCC,0.5,12,12,1,1,
+						false,false,false)];
 			
 		}
 	  protected function draw():void

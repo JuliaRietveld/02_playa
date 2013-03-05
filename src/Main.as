@@ -46,9 +46,9 @@ package
 			this._slideDataVec = new Vector.<SlideData>();
 			this._slideVector	=new Vector.<SlideBase>();
 			
-			this._container=new Sprite;
+			this._container = new Sprite();
 			this.addChild(this._container);
-			this._container.x=150;
+			this._container.x = 150;
 			
 			this.addProgressBar();
 			this.addButtons();
@@ -71,7 +71,7 @@ package
 					
 					case 'video':
 						var video:VideoSlide = new VideoSlide(_slideDataVec[i].url);
-						video.scaleX=	video.scaleY=2;
+						video.scaleX = video.scaleY = 2;
 						_container.addChild(video);
 						_slideVector.push(video);
 						video.deactivate();
@@ -91,8 +91,8 @@ package
 
 		private function handleEnterFrame(e:Event):void
 		{
-	        _progressBar.growBar(_slideVector[_index].progress);
-			if ((_slideVector[_index].progress)>=0.99)
+	        _progressBar.grawBar(_slideVector[_index].progress);
+			if ((_slideVector[_index].progress) >= 0.99)
 				{
 				handleSlideComplete(); 
 			}
@@ -101,29 +101,30 @@ package
 		{				
 			var buttonContainer:Sprite = new Sprite();
 			addChild(buttonContainer);
-			buttonContainer.x=60;
-			buttonContainer.y=200;
+			buttonContainer.x = 60;
+			buttonContainer.y = 200;
 			buttonContainer.mouseEnabled = false;		
 			buttonContainer.buttonMode = true;
 			
 			var backButton:BackButton=new BackButton();
 			buttonContainer.addChild(backButton);
-			backButton.x=0;
-			backButton.y=0;
+			backButton.x = backButton.y = 0;
 			backButton.addEventListener(MouseEvent.CLICK,onBackButtonClick);
 			
 			var nextButton:NextButton=new NextButton();
 			buttonContainer.addChild(nextButton);
-			nextButton.x=840;
-			nextButton.y=0;
+			nextButton.x = 840;
+			nextButton.y = 0;
 			nextButton.addEventListener(MouseEvent.CLICK,onNextButtonClick);
 		}
 		private function onBackButtonClick(e:MouseEvent):void
 		{	
 			_slideVector[_index].deactivate();	
 			_index--;
-			if (_index<0)
-			{_index=_slideVector.length-1}
+			if (_index < 0)
+			{
+				_index=_slideVector.length-1;
+			}
 			_slideVector[_index].activate();
 			_container.addChild(_slideVector[_index]);
 		}
@@ -131,8 +132,10 @@ package
 		{	
 			_slideVector[_index].deactivate();	
 			_index++;
-			if (_index>_slideVector.length-1)
-			{_index=0}
+			if (_index >_slideVector.length-1)
+			{
+				_index = 0;
+			}
 			_slideVector[_index].activate();
 			_container.addChild(_slideVector[_index]);
 		}
@@ -140,8 +143,10 @@ package
 		{
 			_slideVector[_index].deactivate();	
 			_index++;
-			if (_index>_slideVector.length-1)
-			{_index=0}
+			if (_index > _slideVector.length-1)
+			{
+				_index=0;
+			}
 			_slideVector[_index].activate();
 			_container.addChild(_slideVector[_index]);
 		}
@@ -151,14 +156,14 @@ package
 			_track.graphics.beginFill(0x353535,1);
 			_track.graphics.drawRect(0, 0, 960, 6);
 			_track.graphics.endFill();
-			_track.y=536;
+			_track.y = 536;
 			addChild(_track);
 
 			_track.filters=[new DropShadowFilter(0,20,0xCCCCCC,0.5,12,12,1,1,false,false,false)];
 			
 			_progressBar=new ProgressBar();
 			addChild(_progressBar);
-			_progressBar.y=536;
+			_progressBar.y = 536;
 		}
 	}
 }

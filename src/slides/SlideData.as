@@ -9,10 +9,10 @@ package slides
 		
 		public function SlideData(type:String, slideurl:String, duration:Number, coverurl:String)
 		{
-			_type=type;
-			_url = slideurl;//new SlideBase(slideurl);
-			_duration = duration;
-			_cover  = coverurl;//new ImageSlide(coverurl);
+			this._type=type;
+			this._url = slideurl;//new SlideBase(slideurl);
+			this._duration = duration;
+			this._cover  = coverurl;//new ImageSlide(coverurl);
 		}
 		public function get type():String
 		{
